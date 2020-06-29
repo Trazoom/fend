@@ -6,10 +6,10 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const AYLIENTextAPI = require('aylien_textapi');
-const textapi = new AYLIENTextAPI({
+/*const textapi = new AYLIENTextAPI({
   application_id: "YOUR_APP_ID",
   application_key: "YOUR_APP_KEY"
-});
+});*/
 
 module.exports = {
     entry: './src/client/index.js',

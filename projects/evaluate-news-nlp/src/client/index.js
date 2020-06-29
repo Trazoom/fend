@@ -18,10 +18,11 @@ const getAll = async () => {
     const response = await fetch('http://localhost:8081/all');
     try {
         const data = await response.json();
+        console.log(data);
         return data;
     } catch(error) {
         console.log('error', error);
-        return error;
     }
 }
-getAll();
+let noget = getAll();
+console.log(noget);

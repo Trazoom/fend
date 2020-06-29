@@ -20,15 +20,23 @@ app.get('/', function (req, res) {
 })
 
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!')
+const port = 8081;
+app.listen(port, function () {
+    console.log(`Example app listening on port ${port}!`);
 })
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse)
 })
 app.get('/all', sendData);
-
+let noget = {}
 function sendData (req, res) {
-  res.send(textapi);
+  res.send(noget);
 };
+textapi.sentiment({
+    'text': 'John is a very good football player!'
+  }, function(error, response) {
+    if (error === null) {
+      noget = response;
+    }
+  });
