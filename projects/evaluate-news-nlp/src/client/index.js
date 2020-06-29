@@ -26,3 +26,4 @@ const getAll = async () => {
 }
 let noget = getAll();
 console.log(noget);
+console.log(noget[0].polarity);
