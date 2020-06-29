@@ -13,17 +13,15 @@ export {
 
 console.log(checkForName);
 
-alert("I EXIST")
-console.log("CHANGE!!");
 
 const getAll = async () => {
     const response = await fetch('http://localhost:8081/all');
     try {
         const data = await response.json();
         return data;
-        
     } catch(error) {
         console.log('error', error);
+        return error;
     }
 }
-console.log(getAll());
+getAll();
