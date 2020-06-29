@@ -18,12 +18,13 @@ const getAll = async () => {
     const response = await fetch('http://localhost:8081/all');
     try {
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
     } catch(error) {
         console.log('error', error);
     }
+    console.log(data);
 }
 let noget = getAll();
 console.log(noget);
-console.log(noget[0].polarity);
+//console.log(noget.text);
