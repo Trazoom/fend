@@ -8,6 +8,8 @@ var textapi = new aylien({
     application_id: process.env.API_ID,
     application_key: process.env.API_KEY
  });
+ let answer = {};
+ let projectData = [];
 const app = express();
 
 app.use(express.static('dist'));
@@ -26,17 +28,34 @@ app.listen(port, function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+    res.send(answer)
 })
 app.get('/all', sendData);
-let noget = {}
+
 function sendData (req, res) {
-  res.send(noget);
+  answer = getResult('https://www.imdb.com/');
+  //console.log(answer);
+  //res.send(answer);
 };
-textapi.sentiment({
-    'text': 'John is a very good football player!'
+let noget = {};
+
+app.post('/add', callBack);
+
+function callBack(req,res){
+  console.log('Post received!');
+  console.log(req.body)
+  projectData.push(req.body);
+  console.log(projectData);
+}
+
+function getResult(url) {
+  textapi.classify({
+    'url': url
   }, function(error, response) {
     if (error === null) {
-      noget = response;
+      console.log(response);
+      answer = response;
+      return response;
     }
   });
+}
