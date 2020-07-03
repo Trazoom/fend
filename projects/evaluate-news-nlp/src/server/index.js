@@ -2,6 +2,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 var path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const mockAPIResponse = require('./mockAPI.js');
 var aylien = require("aylien_textapi");
 var textapi = new aylien({
@@ -13,6 +15,11 @@ var textapi = new aylien({
 const app = express();
 
 app.use(express.static('dist'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(cors());
+
+
 
 console.log(__dirname);
 
@@ -33,7 +40,7 @@ app.get('/test', function (req, res) {
 app.get('/all', sendData);
 
 function sendData (req, res) {
-  answer = getResult('https://www.imdb.com/');
+  answer = getResult('https://www.facebook.com/');
   //console.log(answer);
   //res.send(answer);
 };
